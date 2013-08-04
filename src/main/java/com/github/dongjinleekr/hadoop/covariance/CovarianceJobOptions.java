@@ -3,7 +3,7 @@ package com.github.dongjinleekr.hadoop.covariance;
 import org.apache.commons.cli2.builder.ArgumentBuilder;
 import org.apache.commons.cli2.builder.DefaultOptionBuilder;
 
-public class CovarianceOptionCreator {
+public class CovarianceJobOptions {
   public static final String CARDINALITY = "cardinality";
   public static final String VECTOR_COUNT = "vectorCount";
   public static final String MEAN_VECTOR = "meanVector";

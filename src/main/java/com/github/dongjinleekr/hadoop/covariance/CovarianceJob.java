@@ -29,8 +29,8 @@ public class CovarianceJob extends AbstractJob {
   public int run(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
     addInputOption();
     addOutputOption();
-    addOption(CovarianceOptionCreator.cardinalityOption().create());
-    addOption(CovarianceOptionCreator.vectorCountOption().create());
+    addOption(CovarianceJobOptions.cardinalityOption().create());
+    addOption(CovarianceJobOptions.vectorCountOption().create());
     
     if (parseArguments(args) == null) {
       return -1;
@@ -42,15 +42,15 @@ public class CovarianceJob extends AbstractJob {
     
     Path input = getInputPath();
     Path output = getOutputPath();
-    int cardinality = Integer.parseInt(getOption(CovarianceOptionCreator.CARDINALITY));
-    int vectorCount = Integer.parseInt(getOption(CovarianceOptionCreator.VECTOR_COUNT));
+    int cardinality = Integer.parseInt(getOption(CovarianceJobOptions.CARDINALITY));
+    int vectorCount = Integer.parseInt(getOption(CovarianceJobOptions.VECTOR_COUNT));
      
     return run(getConf(), input, output, cardinality, vectorCount);
   }
   
   public int run(Configuration conf, Path input, Path output, int cardinality, int vectorCount) throws IOException, ClassNotFoundException, InterruptedException {
-    conf.setInt(CovarianceOptionCreator.CARDINALITY, cardinality);
-    conf.setInt(CovarianceOptionCreator.VECTOR_COUNT, vectorCount);
+    conf.setInt(CovarianceJobOptions.CARDINALITY, cardinality);
+    conf.setInt(CovarianceJobOptions.VECTOR_COUNT, vectorCount);
     
     // current datetime
     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");

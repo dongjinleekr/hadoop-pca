@@ -28,8 +28,8 @@ public class Covariance {
     protected void setup(Context context) throws IOException {
       Configuration conf = context.getConfiguration();
       
-      this.cardinality = conf.getInt(CovarianceOptionCreator.CARDINALITY, 0);
-      this.vectorCount = conf.getInt(CovarianceOptionCreator.VECTOR_COUNT, 1);
+      this.cardinality = conf.getInt(CovarianceJobOptions.CARDINALITY, 0);
+      this.vectorCount = conf.getInt(CovarianceJobOptions.VECTOR_COUNT, 1);
     }
     
     @Override
@@ -61,7 +61,7 @@ public class Covariance {
       Configuration conf = context.getConfiguration();
       FileSystem fs = FileSystem.get(conf);
       
-      this.cardinality = conf.getInt(CovarianceOptionCreator.CARDINALITY, 0);
+      this.cardinality = conf.getInt(CovarianceJobOptions.CARDINALITY, 0);
       
       URI[] archives = DistributedCache.getCacheArchives(conf);
       Path meanPath = new Path(archives[0]);
